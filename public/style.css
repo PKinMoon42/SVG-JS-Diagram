@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    background-color: #FAFAFA;
+    font-family: 'Roboto', sans-serif;
+}
+
+text {
+    font-size: 14px;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+path {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.3);
+    stroke-width: 1;
+}
+
+rect {
+    cursor: pointer;
+}
+
+.section {
+    box-sizing: border-box;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.48);
+    padding: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.section i {
+    font-size: 17px;
+    margin-right: 20px;
+}
+
+article {
+    z-index: 100;
+    position: fixed;
+    top: 4rem;
+    right: 1rem;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.48);
+    width: 200px;
+    padding: 15px;
+    padding-right: 25px;
+    border: 1px solid #ddd;
+    background-color: #ffffff88;
+    line-height: 1.5;
+}
+article i {
+    margin-right: -10px;
+    float: right;
+    font-size: 1.5rem;
+}
+
+#drawing {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.yellow {
+    fill: #FFE082;
+}
+
+.blue {
+    fill: #B2EBF2;
+}
+
+.purple {
+    fill: #E1BEE7;
+}
+
+.clicked {
+    stroke-width: 2px;
+    stroke: #03A9F4;
+}
+
+#save-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #03A9F4;
+    padding: .5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#save-btn:hover {
+    background-color: #10b3ff;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG.js</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+</head>
+<body>
+    <div class="section" id="section1" style="height: 200px"><i class="fas fa-pen"></i>Project</div>
+    <div class="section" id="section2" style="height: 200px"><i class="fas fa-pen"></i>Stakeholders</div>
+    <div class="section" id="section3" style="height: 360px"><i class="fas fa-pen"></i>Criterias</div>
+    <div class="section" id="section4" style="height: 264px"><i class="fas fa-pen"></i>Scenarios (hidden)</div>
+
+    <div id="drawing"></div>
+
+    <button id="save-btn">SAVE</button>
+
+    <article>
+        <i class="fas fa-info"></i>
+        <p>1.) Click on a node in <b>Stakeholders</b> section to select as a parent. </p>
+        <p>2.) Double click on an empty space in the <b>Criterias</b> section to add a new node.</p>
+    </article>
+
+    <script src="svg.min.js"></script>
+    <script src="svg.draggable.min.js"></script>
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
