@@ -5,7 +5,7 @@ if (!localStorage.getItem('nodesData')) {
 }
 
 const draw = SVG().addTo('#drawing').size(window.innerWidth, window.innerHeight);
-const nodes = [];
+let nodes = [];
 let clickedNode;
 
 function calcBezierCPX (parentNode, thisNode) {
@@ -123,6 +123,28 @@ function deselectLines() {
     });
 }
 
+function deleteSelected() {
+    const newNodes = nodes.filter((elem) => {
+        return elem.data.id !== clickedNode.data.id && elem.data.parentId !== clickedNode.data.id;
+    });
+    nodes = newNodes;
+    draw.clear();
+    nodes.forEach((elem) => {
+        const parent = findNode(elem.data.parentId) ? findNode(elem.data.parentId).node : null
+        const newNode = createNode({
+            ...elem.data,
+            parent: parent,
+            label: elem.data.text
+        });
+        newNode.node.click(onClick);
+        makeDraggable(newNode);
+    });
+    clickedNode = null;
+    /*******
+    /* TODO should save and reload everything after deletion
+    */
+}
+
 
 data.forEach((dataElem) => {
     let parent = !!dataElem.parentId
@@ -186,4 +208,12 @@ document.querySelector('#save-btn').addEventListener('click', () => {
         newData.push(node.data);
     });
     localStorage.setItem('nodesData', JSON.stringify(newData));
+});
+
+document.addEventListener('keyup', (evt) => {
+    console.log(clickedNode);
+    console.log(evt.key);
+    if (evt.key === 'Delete' && !!clickedNode) {
+        deleteSelected();
+    }
 });
