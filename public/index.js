@@ -65,7 +65,7 @@ function makeDraggable (thisNode) {
 }
 
 function findNode (id) {
-    return nodes.find(elem => elem.node.data('id') === id).node;
+    return nodes.find(elem => elem.node.data('id') === id);
 }
 
 function onDragStart (currentNode) {
@@ -132,22 +132,31 @@ nodes.forEach((thisNode) => {
 document.addEventListener('click', (evt) => {
     if (clickedNode) {
         nodes.forEach(node => node.node.removeClass('clicked'));
-        clickedNode.addClass('clicked');        
+        clickedNode.node.addClass('clicked');        
     }
     if (evt.target.tagName !== 'rect') {
         nodes.forEach(node => node.node.removeClass('clicked'));
     }
-    
 });
 
 document.addEventListener('dblclick', (evt) => {
     const criterias = document.querySelector('#section3');
+    const stakeholders = document.querySelector('#section2');
     if (evt.offsetY > criterias.offsetTop
         && evt.offsetY < criterias.offsetTop + criterias.offsetHeight) {
-        if (!!clickedNode && clickedNode.hasClass('blue')) {
+        if (!!clickedNode && clickedNode.node.hasClass('blue')
+            || !!clickedNode && clickedNode.node.hasClass('purple')) {
             const label = prompt('New node label:');
             if (label) {
-                addNewNode({ parent: clickedNode, cx: evt.pageX, cy: evt.pageY, color: 'purple', label}, nodes);
+                addNewNode({ parent: clickedNode.node, cx: evt.pageX, cy: evt.pageY, color: 'purple', label, id: new Date().getTime()}, nodes);
+            }
+        } 
+    } else if (evt.offsetY > stakeholders.offsetTop
+        && evt.offsetY < stakeholders.offsetTop + stakeholders.offsetHeight) {
+        if (!!clickedNode && clickedNode.node.hasClass('yellow')) {
+            const label = prompt('New node label:');
+            if (label) {
+                addNewNode({ parent: clickedNode.node, cx: evt.pageX, cy: evt.pageY, color: 'blue', label, id: new Date().getTime() }, nodes);
             }
         }
     }

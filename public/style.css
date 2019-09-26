@@ -8,6 +8,7 @@ text {
     font-size: 14px;
     opacity: 0.8;
     pointer-events: none;
+    user-select: none;
 }
 
 path {
@@ -48,6 +49,11 @@ article {
     background-color: #ffffff88;
     line-height: 1.5;
 }
+
+ol {
+    padding-left: 1rem;
+}
+
 article i {
     margin-right: -10px;
     float: right;
@@ -89,6 +95,7 @@ article i {
     color: #fff;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    user-select: none;
 }
 
 #save-btn:hover {
