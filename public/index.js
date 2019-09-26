@@ -106,7 +106,22 @@ function addNewNode (nodeData, allNodes) {
     newNode.node.click(onClick);
 };
 
+function makeSelectedLines() {
+    nodes.forEach((elem) => {
+        if (elem.data.parentId === clickedNode.node.data('id')) {
+            elem.line.addClass('selected');
+        } 
+    });
+    clickedNode.line.addClass('selected');
+}
 
+function deselectLines() {
+    nodes.forEach((elem) => {
+        if (elem.line) {
+            elem.line.removeClass('selected');
+        }
+    });
+}
 
 
 data.forEach((dataElem) => {
@@ -131,11 +146,14 @@ nodes.forEach((thisNode) => {
 
 document.addEventListener('click', (evt) => {
     if (clickedNode) {
+        deselectLines();
         nodes.forEach(node => node.node.removeClass('clicked'));
-        clickedNode.node.addClass('clicked');        
+        clickedNode.node.addClass('clicked'); 
+        makeSelectedLines();       
     }
     if (evt.target.tagName !== 'rect') {
         nodes.forEach(node => node.node.removeClass('clicked'));
+        deselectLines();
     }
 });
 
